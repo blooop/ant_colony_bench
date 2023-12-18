@@ -1,5 +1,5 @@
 {
-	"name": "python_template",
+	"name": "ant_colony_bench",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": ".."
