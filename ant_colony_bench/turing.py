@@ -3,6 +3,7 @@ import taichi as ti
 import taichi.math as tm
 from video_writer import VideoWriter
 
+# https://www.degeneratestate.org/posts/2017/May/05/turing-patterns/
 
 ti.init(arch=ti.vulkan)
 
@@ -124,25 +125,17 @@ if __name__ == "__main__":
     run_cfg.level = 4
     run_cfg.use_sample_cache=True
     run_cfg.run_tag="1"
-    # run_cfg.on
     bench =SweepTuring().to_bench(run_cfg)
 
-    # bench
-    # bench.worker()
     # bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du,SweepTuring.param.Dv,SweepTuring.param.feed,SweepTuring.param.kill])
-    # bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du,SweepTuring.param.Dv])
+    bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du,SweepTuring.param.Dv])
 
     SweepTuring.param.Du.bounds = [0.13,0.19]
     SweepTuring.param.Dv.bounds = [0.08,0.09]
     run_cfg.level = 4
-    # bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du,SweepTuring.param.Dv])
-
-    # bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du]),SweepTuring.param.Dv
-
-    bench.plot_sweep("turing",input_vars=[SweepTuring.param.bitrate])
-
-
-
-
+    bench.plot_sweep("turing",input_vars=[SweepTuring.param.Du,SweepTuring.param.Dv])
+    # bench.plot_sweep("turing",input_vars=[SweepTuring.param.bitrate])
+    bench.report.save_index()
     bench.report.show()
+    
 
